@@ -1,1 +1,49 @@
 name: cashew
+options:
+  bundleIdPrefix: net.momoogles
+settings:
+  base:
+    SWIFT_VERSION: 5.9.2
+settingGroups:
+  common:
+    DEVELOPMENT_TEAM: 8P6W6TYULV
+targets:
+  cashew:
+    platform: iOS
+    type: application
+    sources: cashew
+    settings:
+      groups:
+        - common
+      base:
+        ENABLE_PREVIEWS: YES
+        DEVELOPMENT_ASSET_PATHS: '"cashew/Preview Content"'
+        CODE_SIGN_ENTITLEMENTS: "cashew/cashew.entitlements"
+        CODE_SIGN_STYLE: Automatic
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 1.0
+    info:
+      path: "cashew/Info.plist"
+      properties:
+        CFBundleIdentifier: ${PRODUCT_BUNDLE_IDENTIFIER}
+        CFBundleName: ${PRODUCT_NAME}
+        CFBundleShortVersionString: ${MARKETING_VERSION}
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+  cashewTests:
+    platform: iOS
+    type: bundle.unit-test
+    sources: cashewTests
+    dependencies:
+      - target: cashew
+    settings:
+      groups:
+        - common
+  cashewUITests:
+    platform: iOS
+    type: bundle.ui-testing
+    sources: cashewUITests
+    dependencies:
+      - target: cashew
+    settings:
+      groups:
+        - common
