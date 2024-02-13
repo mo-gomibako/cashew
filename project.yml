@@ -1,4 +1,8 @@
 name: cashew
+packages:
+  GoogleSignIn:
+    url: https://github.com/google/GoogleSignIn-iOS
+    majorVersion: 7.0.0
 options:
   bundleIdPrefix: net.momoogles
 settings:
@@ -29,6 +33,9 @@ targets:
         CFBundleName: ${PRODUCT_NAME}
         CFBundleShortVersionString: ${MARKETING_VERSION}
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+    dependencies:
+      - package: GoogleSignIn
+        product: GoogleSignInSwift
   cashewTests:
     platform: iOS
     type: bundle.unit-test
